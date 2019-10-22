@@ -1,4 +1,4 @@
-# Hellow World to test Kuberenets Cluster
+# Helow World to test Kuberenets Cluster
 
 It uses ngnix as base container to server static html pages
 
