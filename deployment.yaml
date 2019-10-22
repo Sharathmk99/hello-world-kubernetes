@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helow-world-kubernetes
+  name: helow-world-kubernetes
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helow-world-kubernetes
+  template:
+    metadata:
+      labels:
+        app: helow-world-kubernetes
+    spec:
+      containers:
+      - image: sharathmk99/hello-world-kubernetes:latest
+        imagePullPolicy: Always
+        name: hello-world-kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: helow-world-kubernetes
+  name: hellow-world-kubernetes
+  namespace: default
+spec:
+  externalIPs: [""]
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: helow-world-kubernetes
+  type: NodePort
